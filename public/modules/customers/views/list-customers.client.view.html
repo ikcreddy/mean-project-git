@@ -1,0 +1,44 @@
+<section data-ng-controller="CustomersController as customerCtrl">
+    <div class="page-header">
+        <h1>Customers</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="input-group">
+                <input class="form-control" type="text" data-ng-model="searchText"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default">Go!</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <button class="btn btn-success" ng-click="customerCtrl.modalCreate()">New Customer</button>
+
+        </div>
+    </div>
+    </br>
+    </br>
+    <div class="list-group">
+        <div class="col-md-4" data-ng-repeat="customer in customerCtrl.customers | filter:searchText">
+            <a data-ng-click="customerCtrl.modalUpdate('lg',customer)" class="list-group-item">
+        <h4 class="cust-list">
+            <i class="glyphicon glyphicon-user"></i>
+        </h4>
+       <div class="row">
+           <div class="col-md-10">
+               <h4 data-ng-click="customerCtrl.modalUpdate('lg',customer)">{{customer.firstName}} {{customer.surName}}</h4>
+               <small class="list-group-item-text text-muted">
+                   <span data-ng-bind="customer.created | date:'medium'"></span>
+                    <span class="pull-right">
+                        <button class="btn btn-default btn-sm" ng-click="customerCtrl.remove(customer)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+                    </span>
+               </small>
+           </div>
+       </div>
+            </a>
+        </div>
+</div>
+
+</section>
